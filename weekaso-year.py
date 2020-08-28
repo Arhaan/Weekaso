@@ -16,7 +16,7 @@ def get_message():
     today = date.today()
     weeks_gone = (int)((today - START_DATE).days/7)
     weeks_left = (int)((END_DATE - today).days/7)
-    message = "Each square represents a week in this year"
+    message = "Each square represents a week in this year\n"
     printed_letters = 0
     for i in range(weeks_gone):
         message += '\u25A0'
