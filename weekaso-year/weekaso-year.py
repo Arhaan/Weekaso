@@ -45,4 +45,6 @@ while True:
         print("Posted Message")
     except Exception as e:
         print(e)
-    time.sleep(INTERVAL)
+    for i in range((int)(INTERVAL/(60))):
+        time.sleep(INTERVAL/60/7/24)
+        print('Sleeping ...')
