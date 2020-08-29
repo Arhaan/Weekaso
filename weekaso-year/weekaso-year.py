@@ -4,8 +4,7 @@ import tweepy
 import time
 
 INTERVAL = 60*60*24*7
-END_DATE = date(2021, 1, 1)
-START_DATE = date(2020, 1, 1)
+
 CONSUMER_KEY = config('CONSUMER_KEY')
 CONSUMER_SECRET = config('CONSUMER_SECRET')
 ACCESS_KEY = config('ACCESS_KEY')
@@ -14,6 +13,9 @@ ACCESS_SECRET = config('ACCESS_SECRET')
 
 def get_message():
     today = date.today()
+    year = today.year
+    END_DATE = date(year+1, 1, 1)
+    START_DATE = date(year, 1, 1)
     weeks_gone = (int)((today - START_DATE).days/7)
     weeks_left = (int)((END_DATE - today).days/7)
     message = "Each square represents a week in this year\n"
@@ -36,7 +38,11 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 while True:
+
     message = get_message()
-    api.update_status(message)
-    print("Posted Message")
+    try:
+        api.update_status(message)
+        print("Posted Message")
+    except Exception as e:
+        print(e)
     time.sleep(INTERVAL)
