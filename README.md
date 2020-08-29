@@ -1,4 +1,4 @@
-Twitter bots for weekaso
+Twitter bot
 
 # Weekaso Year
 [Follow me on twitter](https://twitter.com/Weekaso3)
